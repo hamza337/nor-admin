@@ -72,7 +72,11 @@ const Admin = () => {
 
         {/* Tab content */}
         <div className="mt-6 mx-18">
-          {isProducts ? <ProductsAdmin /> : <DealsAdmin />}
+          {isProducts ? (
+            <ProductsAdmin onAddProduct={() => setShowProductModal(true)} />
+          ) : (
+            <DealsAdmin onAddDeal={() => setShowDealModal(true)} />
+          )}
         </div>
 
         {/* Modals */}

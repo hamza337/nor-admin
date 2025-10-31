@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Pagination from '../../components/Pagination.jsx';
 import ProductDetailModal from './ProductDetailModal.jsx';
+import AddProductModal from './AddProductModal.jsx';
 import DeleteConfirmModal from '../../components/DeleteConfirmModal.jsx';
 import SuccessOverlay from '../../components/SuccessOverlay.jsx';
 
@@ -44,6 +45,7 @@ const ProductsAdmin = () => {
   const [showDelete, setShowDelete] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
+  const [showAdd, setShowAdd] = useState(false);
 
   const showSuccess = (msg) => {
     setSuccessMsg(msg);
@@ -52,6 +54,16 @@ const ProductsAdmin = () => {
   };
   return (
     <div className="bg-white">
+      <div className="mb-4 flex justify-end">
+        <button
+          className="inline-flex items-center gap-2 bg-[#009CA8] hover:brightness-95 text-white text-sm font-medium px-4 py-2 rounded-lg"
+          aria-label="Add New Product"
+          onClick={() => setShowAdd(true)}
+        >
+          <span className="text-lg">＋</span>
+          Add New Product
+        </button>
+      </div>
 
       <div className="overflow-x-auto rounded-xl border border-[#00000080]">
         <table className="min-w-full divide-y divide-gray-200 text-left">
@@ -113,6 +125,13 @@ const ProductsAdmin = () => {
         product={selected}
         editable={editable}
         onSave={() => { setShowDetail(false); showSuccess('Product Updated Successfully'); }}
+      />
+
+      {/* Add Product Modal */}
+      <AddProductModal
+        open={showAdd}
+        onClose={() => setShowAdd(false)}
+        onAdded={() => { setShowAdd(false); showSuccess('Product Added Successfully'); }}
       />
 
       {/* Delete Confirmation */}
