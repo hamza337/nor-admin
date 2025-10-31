@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Field = ({ label, value, onChange, editable, type = 'text' }) => (
   editable ? (
     <div className="flex flex-col gap-1">
-      <label className="text-sm font-medium text-gray-700">{label}</label>
+      <label className="text-left text-sm font-medium text-gray-700">{label}</label>
       <input
         type={type}
         value={value}

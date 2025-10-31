@@ -5,7 +5,7 @@ const ProductDetailModal = ({ open, onClose, product, editable = false, onSave }
 
   const Field = ({ label, children }) => (
     <div className="flex flex-col gap-2">
-      <label className="text-xs text-gray-600">{label}</label>
+      <label className="text-left text-xs text-gray-600">{label}</label>
       {children}
     </div>
   );
@@ -78,7 +78,7 @@ const ProductDetailModal = ({ open, onClose, product, editable = false, onSave }
 
         {/* Description */}
         <div className="text-black text-left px-6 pb-6">
-          <label className="text-xs text-gray-600">Description</label>
+          <label className="text-left text-xs text-gray-600">Description</label>
           {editable ? (
             <textarea rows="4" className="mt-2 w-full border rounded-md px-3 py-2 text-sm" defaultValue="Stay warm and cozy with this soft blue electric blanket..." />
           ) : (

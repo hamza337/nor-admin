@@ -5,7 +5,7 @@ const DealDetailModal = ({ open, onClose, deal, editable = false, onSave }) => {
 
   const Field = ({ label, children }) => (
     <div className="flex flex-col gap-2">
-      <label className="text-xs text-gray-600">{label}</label>
+      <label className="text-left text-xs text-gray-600">{label}</label>
       {children}
     </div>
   );
@@ -70,7 +70,7 @@ const DealDetailModal = ({ open, onClose, deal, editable = false, onSave }) => {
         </div>
 
         <div className="text-black text-left px-6 pb-6 md:col-span-2">
-          <label className="text-xs text-gray-600">Product Included</label>
+          <label className="text-left text-xs text-gray-600">Product Included</label>
           <div className="mt-2 border rounded-md px-3 py-2 flex items-center gap-2 flex-wrap text-sm">
             <span className="px-3 py-1 rounded-md bg-gray-100 text-gray-700">Pillows</span>
             <span className="px-3 py-1 rounded-md bg-gray-100 text-gray-700">Cushions</span>
@@ -79,7 +79,7 @@ const DealDetailModal = ({ open, onClose, deal, editable = false, onSave }) => {
 
         {/* Description */}
         <div className="text-black text-left px-6 pb-6">
-          <label className="text-xs text-gray-600">Description</label>
+          <label className="text-left text-xs text-gray-600">Description</label>
           {editable ? (
             <textarea rows="4" className="mt-2 w-full border rounded-md px-3 py-2 text-sm" defaultValue="Stay warm and cozy..." />
           ) : (

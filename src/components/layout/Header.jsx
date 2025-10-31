@@ -40,12 +40,12 @@ const Header = () => {
   return (
     <>
       {/* Main Header */}
-      <header className="bg-white shadow-sm">
+      <header className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="w-full px-18 sm:px-6 lg:px-18">
           <div className="flex items-center justify-between h-16 gap-16">
             {/* Logo */}
             <div className="flex items-center">
-              <Link to="/" className="flex items-center space-x-2">
+              <Link to="/admin" className="flex items-center space-x-2">
                 <img src="/logo.png" alt="NorDeal Logo" className="w-10 h-10" />
                 <span className="text-2xl font-bold">
                   <span className="text-[#E95817]">NOR</span>

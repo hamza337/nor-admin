@@ -48,7 +48,7 @@ const Sidebar = ({ collapsed: initialCollapsed = false, onToggle }) => {
         {collapsed ? (
           <img src="/logo.png" alt="NorDeal" className="w-8 h-8" />
         ) : (
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/admin" className="flex items-center gap-2">
             <img src="/logo.png" alt="NorDeal" className="w-8 h-8" />
             <span className="text-lg font-bold">
               <span className="text-[#E95817]">NOR</span>
