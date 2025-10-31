@@ -1,10 +1,23 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import UserDetailModal from '../../pages/admin/UserDetailModal';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const navigate = useNavigate();
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [profile, setProfile] = useState({ name: 'Admin User', email: 'admin@example.com', role: 'Admin', status: 'Active' });
+
+  const getInitials = (fullName) => {
+    const parts = String(fullName || '')
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    if (parts.length === 0) return 'U';
+    if (parts.length === 1) return (parts[0][0] || 'U').toUpperCase();
+    return `${(parts[0][0] || 'U').toUpperCase()}${(parts[parts.length - 1][0] || 'U').toUpperCase()}`;
+  };
 
   useEffect(() => {
     const onClick = (e) => {
@@ -75,17 +88,17 @@ const Header = () => {
                   onClick={() => setMenuOpen((v) => !v)}
                   className="w-10 h-10 rounded-full bg-[#E6F7F8] text-[#009CA8] flex items-center justify-center font-semibold"
                 >
-                  AJ
+                  {getInitials(profile.name)}
                 </button>
                 {menuOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
                     <div className="px-4 py-3 text-center border-b bg-gray-50">
-                      <div className="mx-auto w-12 h-12 rounded-full bg-[#E6F7F8] text-[#009CA8] flex items-center justify-center font-semibold">AJ</div>
+                      <div className="mx-auto w-12 h-12 rounded-full bg-[#E6F7F8] text-[#009CA8] flex items-center justify-center font-semibold">{getInitials(profile.name)}</div>
                       <div className="mt-1 text-xs text-gray-500">Admin</div>
                     </div>
                     <div className="py-1">
                       <button
-                        onClick={() => { setMenuOpen(false); navigate('/admin/users'); }}
+                        onClick={() => { setMenuOpen(false); setShowProfileModal(true); }}
                         className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF0EA] hover:text-[#E95817]"
                       >
                         Edit Profile
@@ -106,6 +119,14 @@ const Header = () => {
           </div>
         </div>
       </header>
+
+      <UserDetailModal
+        open={showProfileModal}
+        onClose={() => setShowProfileModal(false)}
+        user={profile}
+        editable
+        onSave={(updated) => { setProfile(updated); setShowProfileModal(false); }}
+      />
     </>
   );
 };

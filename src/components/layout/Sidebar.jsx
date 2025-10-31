@@ -5,12 +5,12 @@ const navItems = [
   { to: '/admin', label: 'Dashboard', icon: (
     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 13h8V3H3z"/><path d="M13 21h8V11h-8z"/><path d="M13 3h8"/><path d="M3 21h8v-6H3z"/></svg>
   ) },
-//   { to: '/admin/products', label: 'Products', icon: (
-//     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12l8.73-5.04"/><path d="M12 22V12"/></svg>
-//   ) },
-//   { to: '/admin/deals', label: 'Deals', icon: (
-//     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-8-8a2 2 0 0 0-2.83 0l-6.34 6.34a2 2 0 0 0 0 2.83l8 8a2 2 0 0 0 2.83 0l6.34-6.34a2 2 0 0 0 0-2.83z"/><path d="M7 7h.01"/></svg>
-//   ) },
+  { to: '/admin/products', label: 'Products', icon: (
+    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12l8.73-5.04"/><path d="M12 22V12"/></svg>
+  ) },
+  { to: '/admin/deals', label: 'Deals', icon: (
+    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-8-8a2 2 0 0 0-2.83 0l-6.34 6.34a2 2 0 0 0 0 2.83l8 8a2 2 0 0 0 2.83 0l6.34-6.34a2 2 0 0 0 0-2.83z"/><path d="M7 7h.01"/></svg>
+  ) },
   { to: '/admin/orders', label: 'Orders', icon: (
     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12l8.73-5.04"/><path d="M12 22V12"/></svg>
   ) },
