@@ -1,6 +1,28 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const onClick = (e) => {
+      if (!menuRef.current) return;
+      if (!menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', onClick);
+    return () => document.removeEventListener('mousedown', onClick);
+  }, []);
+
+  const onLogout = () => {
+    try {
+      localStorage.clear();
+    } catch {}
+    navigate('/', { replace: true });
+  };
 
   return (
     <>
@@ -36,14 +58,48 @@ const Header = () => {
               </div>
             </div>
 
-            {/* Contact Info */}
-            <div className="hidden lg:flex items-center space-x-2 text-sm text-gray-600">
-              <div className="flex items-center space-x-1 px-3 py-2 rounded-lg">
-                <svg className="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
-                <span className="text-orange-500 font-medium">Helpline</span>
-                <span className="font-semibold text-gray-800">06-900-6389-00</span>
+            {/* Right area: contact (lg) + profile menu */}
+            <div className="flex items-center gap-4">
+              <div className="hidden lg:flex items-center space-x-2 text-sm text-gray-600">
+                <div className="flex items-center space-x-1 px-3 py-2 rounded-lg">
+                  <svg className="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                  </svg>
+                  <span className="text-orange-500 font-medium">Helpline</span>
+                  <span className="font-semibold text-gray-800">06-900-6389-00</span>
+                </div>
+              </div>
+              <div className="relative" ref={menuRef}>
+                <button
+                  aria-label="Open profile menu"
+                  onClick={() => setMenuOpen((v) => !v)}
+                  className="w-10 h-10 rounded-full bg-[#E6F7F8] text-[#009CA8] flex items-center justify-center font-semibold"
+                >
+                  AJ
+                </button>
+                {menuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
+                    <div className="px-4 py-3 text-center border-b bg-gray-50">
+                      <div className="mx-auto w-12 h-12 rounded-full bg-[#E6F7F8] text-[#009CA8] flex items-center justify-center font-semibold">AJ</div>
+                      <div className="mt-1 text-xs text-gray-500">Admin</div>
+                    </div>
+                    <div className="py-1">
+                      <button
+                        onClick={() => { setMenuOpen(false); navigate('/admin/users'); }}
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF0EA] hover:text-[#E95817]"
+                      >
+                        Edit Profile
+                      </button>
+                      <div className="my-1 h-px bg-gray-100" />
+                      <button
+                        onClick={onLogout}
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF0EA] hover:text-[#E95817]"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
