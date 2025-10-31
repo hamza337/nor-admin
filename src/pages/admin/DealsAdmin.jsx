@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Pagination from '../../components/Pagination.jsx';
 import DealDetailModal from './DealDetailModal.jsx';
+import AddDealModal from './AddDealModal.jsx';
 import DeleteConfirmModal from '../../components/DeleteConfirmModal.jsx';
 import SuccessOverlay from '../../components/SuccessOverlay.jsx';
 
@@ -75,6 +76,7 @@ const DealsAdmin = () => {
   const [showDelete, setShowDelete] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
+  const [showAdd, setShowAdd] = useState(false);
 
   const showSuccess = (msg) => {
     setSuccessMsg(msg);
@@ -83,6 +85,16 @@ const DealsAdmin = () => {
   };
   return (
     <div className="bg-white">
+      <div className="mb-4 flex justify-end">
+        <button
+          className="inline-flex items-center gap-2 bg-[#009CA8] hover:brightness-95 text-white text-sm font-medium px-4 py-2 rounded-lg"
+          aria-label="Add New Deal"
+          onClick={() => setShowAdd(true)}
+        >
+          <span className="text-lg">＋</span>
+          Add New Deal
+        </button>
+      </div>
       <div className="overflow-x-auto rounded-xl border border-[#00000080]">
         <table className="min-w-full divide-y divide-gray-200 text-left">
           <thead className="bg-[#E95817] text-white">
@@ -144,6 +156,13 @@ const DealsAdmin = () => {
         deal={selected}
         editable={editable}
         onSave={() => { setShowDetail(false); showSuccess('Deal Updated Successfully'); }}
+      />
+
+      {/* Add Deal Modal */}
+      <AddDealModal
+        open={showAdd}
+        onClose={() => setShowAdd(false)}
+        onAdded={() => { setShowAdd(false); showSuccess('Deal Added Successfully'); }}
       />
 
       {/* Delete Confirmation */}
